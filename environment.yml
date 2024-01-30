@@ -1,0 +1,7 @@
+name: osm-geotiff
+dependencies:
+  - python==3.10.13
+  - cairo==1.18.0
+  - pip
+  - pip:
+    - -r requirements.txt

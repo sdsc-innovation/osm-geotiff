@@ -18,4 +18,22 @@ sudo apt-get install libcairo2
 pip install -r requirements.txt
 ```
 
+In order to download an extract of OpenStreetMap data for Switzerland, we rely on [Geofabrik](https://download.geofabrik.de/europe/switzerland.html) dumps, which are updated daily. To proceed, download [`switzerland-latest-free.shp.zip`](https://download.geofabrik.de/europe/switzerland-latest-free.shp.zip) to `./data/`:
+
+```
+curl -o ./data/ https://download.geofabrik.de/europe/switzerland-latest-free.shp.zip
+```
+
+The recommended way to process this input file is to open and run [`./notebooks/generate.ipynb`](./notebooks/generate.ipynb) using Jupyter, which provides an interactive session:
+
+```
+jupyter notebook
+```
+
+Alternatively, you can use [papermill](https://papermill.readthedocs.io/) to run it from the terminal:
+
+```
+papermill --cwd ./notebooks/ ./notebooks/generate.ipynb ./notebooks/generate.out.ipynb
+```
+
 ...

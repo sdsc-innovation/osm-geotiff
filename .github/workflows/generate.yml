@@ -1,0 +1,78 @@
+name: Generate new Release
+
+on:
+  schedule:
+  - cron: '0 0 1 1,4,7,10 *'
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: true
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+    - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    - name: Set up Python 3.10
+      uses: actions/setup-python@v5
+      with:
+        python-version: "3.10.13"
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    - name: Download OpenStreetMap dump from Geofabrik GmbH
+      run: |
+        curl -o ./data/switzerland-latest-free.shp.zip https://download.geofabrik.de/europe/switzerland-latest-free.shp.zip
+
+    - name: Build GeoTIFF
+      run: papermill --cwd ./notebooks/ ./notebooks/generate.ipynb ./notebooks/generate.out.ipynb
+
+    - name: Upload artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: generated-output
+        path: ./data/switzerland.tif
+
+  release:
+    needs: build
+
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+      id-token: write
+
+    steps:
+
+    - name: Set GitHub Release tag
+      run: |
+        echo "RELEASE_ID=$(date +'%Y-%m-%d')" >> $GITHUB_ENV
+
+    - name: Download artifact
+      uses: actions/download-artifact@v3
+      with:
+        name: generated-output
+        path: ./data/
+
+    - name: Create GitHub Release
+      env:
+        GITHUB_TOKEN: ${{ github.token }}
+      run: |
+        gh release create "$RELEASE_ID" --repo "${{ github.repository }}" --notes ""
+
+    - name: Upload artifact signatures to GitHub Release
+      env:
+        GITHUB_TOKEN: ${{ github.token }}
+      run: |
+        gh release upload "$RELEASE_ID" ./data/switzerland.tif --repo "${{ github.repository }}"

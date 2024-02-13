@@ -1,7 +1,7 @@
 name: osm-geotiff
 dependencies:
   - python==3.10.13
-  - cairo==1.18.0
+  - cairo==1.16.0 # 1.18.0 is available on conda-forge
   - pip
   - pip:
     - -r requirements.txt

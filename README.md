@@ -1,6 +1,6 @@
 # OpenStreetMap to GeoTIFF for Switzerland
 
-In this small project, we leverage open data to extract feature maps for Switzerland. We rely on [OpenStreetMap](https://www.openstreetmap.org/) data to extract topographical features at a 100x100 meters resolution. This includes building footprints, roads, railways, water bodies, and forests. The output is stored as GeoTIFF, each feature as a separate channel, using [LV03](https://epsg.io/21781) as coordinate system (c.f. [Swiss coordinate system](https://en.wikipedia.org/wiki/Swiss_coordinate_system)).
+In this small project, we leverage open data to extract feature maps for Switzerland. We rely on [OpenStreetMap](https://www.openstreetmap.org/) data to extract topographical features at a 100x100 meters resolution. This includes building footprints, roads, railways, water bodies, and forests. The output is stored as GeoTIFF, each feature as a separate channel, using [LV95](https://epsg.io/2056) as coordinate system (c.f. [Swiss coordinate system](https://en.wikipedia.org/wiki/Swiss_coordinate_system)).
 
 
 ## Getting started

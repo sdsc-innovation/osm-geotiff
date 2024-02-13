@@ -53,6 +53,11 @@ jobs:
       contents: write
       id-token: write
 
+    env:
+      RELEASE_NOTES: >-
+        This GeoTIFF file is made available under the Open Database License: http://opendatacommons.org/licenses/odbl/1.0/.
+        Any rights in individual contents of the database are licensed under the Database Contents License: http://opendatacommons.org/licenses/dbcl/1.0/
+
     steps:
 
     - name: Set GitHub Release tag
@@ -69,7 +74,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ github.token }}
       run: |
-        gh release create "$RELEASE_ID" --repo "${{ github.repository }}" --notes ""
+        gh release create "$RELEASE_ID" --repo "${{ github.repository }}" --notes "$RELEASE_NOTES"
 
     - name: Upload artifact signatures to GitHub Release
       env:

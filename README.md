@@ -1,11 +1,11 @@
 # OpenStreetMap to GeoTIFF for Switzerland
 
-In this small project, we leverage open data to extract feature maps. We rely on [OpenStreetMap](https://www.openstreetmap.org/) to extract topographical features at a 100x100 meters resolution. The output is stored as GeoTIFF, for convenience.
+In this small project, we leverage open data to extract feature maps for Switzerland. We rely on [OpenStreetMap](https://www.openstreetmap.org/) data to extract topographical features at a 100x100 meters resolution. This includes building footprints, roads, railways, water bodies, and forests. The output is stored as GeoTIFF, each feature as a separate channel, using [LV03](https://epsg.io/21781) as coordinate system (c.f. [Swiss coordinate system](https://en.wikipedia.org/wiki/Swiss_coordinate_system)).
 
 
 ## Getting started
 
-If you us Conda, an [`environment.yml`](environment.yml) is provided:
+If you use Conda, an [`environment.yml`](environment.yml) is provided:
 
 ```
 conda env create --file environment.yml
@@ -36,4 +36,9 @@ Alternatively, you can use [papermill](https://papermill.readthedocs.io/) to run
 papermill --cwd ./notebooks/ ./notebooks/generate.ipynb ./notebooks/generate.out.ipynb
 ```
 
-...
+
+## Releases
+
+While Geofabrik uploads dumps daily, we process a new version every 6 months, as the output is unlikely to change significantly. The provided [`switzerland.tif`](https://github.com/jojolebarjos/osm-geotiff/releases/latest) is released under the [Open Data Commons Open Database License (ODbL)](https://opendatacommons.org/licenses/odbl/), as per [OpenStreetMap guidelines](https://osmfoundation.org/wiki/Licence/Attribution_Guidelines).
+
+The code used to process the data is released under the [MIT license](./LICENSE).

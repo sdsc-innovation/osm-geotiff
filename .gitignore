@@ -1,5 +1,6 @@
 .ipynb_checkpoints/
 *.out.ipynb
+*.png
 *.pyc
 *.tif
 *.zip

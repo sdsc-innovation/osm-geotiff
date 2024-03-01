@@ -2,6 +2,12 @@
 
 In this small project, we leverage open data to extract feature maps for Switzerland. We rely on [OpenStreetMap](https://www.openstreetmap.org/) data to extract topographical features at a 100x100 meters resolution. This includes building footprints, roads, railways, water bodies, and forests. The output is stored as GeoTIFF, each feature as a separate channel, using [LV95](https://epsg.io/2056) as coordinate system (c.f. [Swiss coordinate system](https://en.wikipedia.org/wiki/Swiss_coordinate_system)).
 
+<p align="center" width="90%">
+  <img src="./data/thumbnail.png" alt="" width="90%"/>
+  <br>
+  <em>Roads (in red), buildings (in green), and railways (in blue) of Switzerland. The image is post-processed for better visualization, see <a href="./notebooks/extract_png.ipynb"><code>./notebooks/extract_png.ipynb</code></a>. Please refer to the <a href="#releases">Releases</a> section regarding the license.</em>
+</p>
+
 
 ## Getting started
 

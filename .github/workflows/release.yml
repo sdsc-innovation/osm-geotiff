@@ -34,7 +34,7 @@ jobs:
         curl -o ./data/switzerland-latest-free.shp.zip https://download.geofabrik.de/europe/switzerland-latest-free.shp.zip
 
     - name: Build GeoTIFF
-      run: papermill --cwd ./notebooks/ ./notebooks/generate.ipynb ./notebooks/generate.out.ipynb
+      run: papermill --cwd ./notebooks/ ./notebooks/generate_geotiff.ipynb ./notebooks/generate_geotiff.out.ipynb
 
     - name: Upload artifact
       uses: actions/upload-artifact@v3

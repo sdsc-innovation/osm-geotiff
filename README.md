@@ -24,7 +24,7 @@ In order to download an extract of OpenStreetMap data for Switzerland, we rely o
 curl -o ./data/switzerland-latest-free.shp.zip https://download.geofabrik.de/europe/switzerland-latest-free.shp.zip
 ```
 
-The recommended way to process this input file is to open and run [`./notebooks/generate.ipynb`](./notebooks/generate.ipynb) using Jupyter, which provides an interactive session:
+The recommended way to process this input file is to open and run [`./notebooks/generate_geotiff.ipynb`](./notebooks/generate_geotiff.ipynb) using Jupyter, which provides an interactive session:
 
 ```
 jupyter notebook
@@ -33,12 +33,12 @@ jupyter notebook
 Alternatively, you can use [papermill](https://papermill.readthedocs.io/) to run it from the terminal:
 
 ```
-papermill --cwd ./notebooks/ ./notebooks/generate.ipynb ./notebooks/generate.out.ipynb
+papermill --cwd ./notebooks/ ./notebooks/generate_geotiff.ipynb ./notebooks/generate_geotiff.out.ipynb
 ```
 
 
 ## Releases
 
-While Geofabrik uploads dumps daily, we process a new version every 6 months, as the output is unlikely to change significantly. The provided [`switzerland.tif`](https://github.com/jojolebarjos/osm-geotiff/releases/latest) is released under the [Open Data Commons Open Database License (ODbL)](https://opendatacommons.org/licenses/odbl/), as per [OpenStreetMap guidelines](https://osmfoundation.org/wiki/Licence/Attribution_Guidelines).
+While Geofabrik uploads dumps daily, we process a new version every 6 months, as the output is unlikely to change significantly. The provided [`switzerland.tif`](https://github.com/sdsc-innovation/osm-geotiff/releases/latest) is released under the [Open Data Commons Open Database License (ODbL)](https://opendatacommons.org/licenses/odbl/), as per [OpenStreetMap guidelines](https://osmfoundation.org/wiki/Licence/Attribution_Guidelines).
 
 The code used to process the data is released under the [MIT license](./LICENSE).

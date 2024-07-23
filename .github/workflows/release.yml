@@ -37,7 +37,7 @@ jobs:
       run: papermill --cwd ./notebooks/ ./notebooks/generate_geotiff.ipynb ./notebooks/generate_geotiff.out.ipynb
 
     - name: Upload artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: generated-output
         path: ./data/switzerland.tif
@@ -63,7 +63,7 @@ jobs:
         echo "RELEASE_ID=$(date +'%Y-%m-%d')" >> $GITHUB_ENV
 
     - name: Download artifact
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v4
       with:
         name: generated-output
         path: ./data/
